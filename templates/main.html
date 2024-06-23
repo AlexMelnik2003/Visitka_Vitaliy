@@ -7,92 +7,99 @@
     <title>Туризм в Актау</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #121212;
+            color: #ffffff;
         }
         header {
             background: url('https://pbs.twimg.com/media/D3t2HM_WkAEDREP.jpg') no-repeat center center;
             background-size: cover;
-            color: white;
-            padding: 20px 0;
+            color: #ffffff;
+            padding: 40px 0;
             text-align: center;
             position: relative;
         }
         header h1 {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            padding: 10px;
+            padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
             display: inline-block;
-            border: 2px solid white;
             border-radius: 10px;
         }
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
+            max-width: 900px;
+            margin: 30px auto;
             padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
         h1 {
             text-align: center;
-            color: #003366;
+            color: #00bfa5;
         }
         .intro {
             text-align: center;
-            margin-top: 20px;
+            margin: 20px 0;
         }
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 20px;
+            gap: 15px;
+            margin: 20px 0;
         }
         .gallery img {
-            width: 300px;
-            height: 200px;
-            margin: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            width: 280px;
+            height: 180px;
+            border-radius: 10px;
             object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
         }
         .contact-info {
             text-align: center;
-            margin-top: 20px;
+            margin: 20px 0;
         }
         .contact-info a {
-            color: #003366;
+            color: #00bfa5;
             text-decoration: none;
-            margin: 0 10px;
         }
         .contact-info a:hover {
             text-decoration: underline;
         }
         footer {
-            background-color: #003366;
-            color: white;
+            background-color: #00bfa5;
+            color: #121212;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+            padding: 15px 0;
+            margin-top: 30px;
         }
         .social-buttons {
             text-align: center;
-            margin-top: 20px;
+            margin: 20px 0;
         }
         .social-buttons a {
             margin: 0 10px;
-            text-decoration: none;
+            display: inline-block;
         }
         .social-buttons img {
             width: 40px;
             height: 40px;
+            transition: opacity 0.3s;
+        }
+        .social-buttons img:hover {
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
 <header>
-    <h1 style="color: white;">Туризм в Актау</h1>
+    <h1>Туризм в Актау</h1>
 </header>
 <div class="container">
     <h1>Добро пожаловать!</h1>
@@ -101,7 +108,6 @@
         <p>Здесь Вы можете увидеть одни из моих лучших фотографий.</p>
     </div>
     <div class="gallery">
-        <!-- Места для картинок -->
         <img src="{% static '1.png' %}" alt="Image 1">
         <img src="{% static '2.png' %}" alt="Image 2">
         <img src="{% static '3.png' %}" alt="Image 3">
