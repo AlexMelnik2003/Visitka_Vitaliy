@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туризм в Актау</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: url('https://pbs.twimg.com/media/D3t2HM_WkAEDREP.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #003366;
+        }
+        .intro {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-info a {
+            color: #003366;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .social-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .social-buttons a {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .social-buttons img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 style="color: white;">Туризм в Актау</h1>
+</header>
+<div class="container">
+    <h1>Добро пожаловать!</h1>
+    <div class="intro">
+        <p>Меня зовут Виталий. Я - профессиональный гид и фотограф. Занимаюсь организацией путешествий по Актау!</p>
+        <p>Здесь Вы можете увидеть одни из моих лучших фотографий.</p>
+    </div>
+    <div class="gallery">
+        <!-- Места для картинок -->
+        <img src="{% static '1.png' %}" alt="Image 1">
+        <img src="{% static '2.png' %}" alt="Image 2">
+        <img src="{% static '3.png' %}" alt="Image 3">
+        <img src="{% static '4.png' %}" alt="Image 4">
+        <img src="{% static '5.png' %}" alt="Image 5">
+        <img src="{% static '6.png' %}" alt="Image 6">
+        <img src="{% static '7.png' %}" alt="Image 7">
+        <img src="{% static '8.png' %}" alt="Image 8">
+    </div>
+    <div class="contact-info">
+        <p>А также Вы можете связаться со мной и обсудить детали поездок!</p>
+        <p>Контакты: +7 776 166 2786 Виталий</p>
+    </div>
+    <div class="social-buttons">
+        <a href="https://t.me/+77761662786">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        </a>
+        <a href="https://wa.me/77761662786">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+        <a href="https://www.instagram.com/tour.aktau.kazakhstan/">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 Туризм в Актау. Все права защищены.</p>
+</footer>
+</body>
+</html>
