@@ -13,6 +13,9 @@
             padding: 0;
             background-color: #121212;
             color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background: url('https://pbs.twimg.com/media/D3t2HM_WkAEDREP.jpg') no-repeat center center;
@@ -29,6 +32,13 @@
             display: inline-block;
             border-radius: 10px;
         }
+        header img.logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+        }
         .container {
             max-width: 900px;
             margin: 30px auto;
@@ -36,14 +46,33 @@
             background-color: #1e1e1e;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        h1 {
+        .button-container {
             text-align: center;
-            color: #00bfa5;
+            margin-bottom: 20px;
         }
-        .intro {
-            text-align: center;
-            margin: 20px 0;
+        .button-container button {
+            background-color: #00bfa5;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button-container button:hover {
+            background-color: #00897b;
+        }
+        .section {
+            display: none;
+            flex: 1;
+        }
+        .section.active {
+            display: block;
         }
         .gallery {
             display: flex;
@@ -62,16 +91,71 @@
         .gallery img:hover {
             transform: scale(1.05);
         }
-        .contact-info {
+        .contact-info, .info-content {
             text-align: center;
             margin: 20px 0;
         }
-        .contact-info a {
+        .info-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .info-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .info-item .info-text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .info-item h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #00bfa5;
+        }
+        .info-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+        .contact-info a, .info-content a {
             color: #00bfa5;
             text-decoration: none;
         }
-        .contact-info a:hover {
+        .contact-info a:hover, .info-content a:hover {
             text-decoration: underline;
+        }
+        .contact-card {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            display: inline-block;
+            width: 90%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .contact-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            color: #00bfa5;
+        }
+        .contact-card p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .contact-card .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .contact-card .contact-item img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
         footer {
             background-color: #00bfa5;
@@ -97,45 +181,144 @@
             opacity: 0.7;
         }
     </style>
+    <script>
+        function showSection(sectionId) {
+            var sections = document.getElementsByClassName('section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
 </head>
 <body>
 <header>
+    <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
     <h1>Туризм в Актау</h1>
 </header>
 <div class="container">
-    <h1>Добро пожаловать!</h1>
-    <div class="intro">
-        <p>Меня зовут Виталий. Я - профессиональный гид и фотограф. Занимаюсь организацией путешествий по Актау!</p>
-        <p>Здесь Вы можете увидеть одни из моих лучших фотографий.</p>
+    <div class="button-container">
+        <button onclick="showSection('intro')">Главная</button>
+        <button onclick="showSection('info')">О турах</button>
+        <button onclick="showSection('contact')">Контакты</button>
     </div>
-    <div class="gallery">
-        <img src="{% static '1.png' %}" alt="Image 1">
-        <img src="{% static '2.png' %}" alt="Image 2">
-        <img src="{% static '3.png' %}" alt="Image 3">
-        <img src="{% static '4.png' %}" alt="Image 4">
-        <img src="{% static '5.png' %}" alt="Image 5">
-        <img src="{% static '6.png' %}" alt="Image 6">
-        <img src="{% static '7.png' %}" alt="Image 7">
-        <img src="{% static '8.png' %}" alt="Image 8">
+    <div id="intro" class="section active">
+        <h1>Добро пожаловать!</h1>
+        <div class="intro">
+            <p>Меня зовут Виталий. Я - профессиональный гид и фотограф. Занимаюсь организацией путешествий по Актау!</p>
+            <p>Здесь Вы можете увидеть одни из моих лучших фотографий.</p>
+        </div>
+        <div class="gallery">
+            <img src="{% static '1.png' %}" alt="Image 1">
+            <img src="{% static '2.png' %}" alt="Image 2">
+            <img src="{% static '3.png' %}" alt="Image 3">
+            <img src="{% static '4.png' %}" alt="Image 4">
+            <img src="{% static '5.png' %}" alt="Image 5">
+            <img src="{% static '6.png' %}" alt="Image 6">
+            <img src="{% static '7.png' %}" alt="Image 7">
+            <img src="{% static '8.png' %}" alt="Image 8">
+        </div>
     </div>
-    <div class="contact-info">
-        <p>А также Вы можете связаться со мной и обсудить детали поездок!</p>
-        <p>Контакты: +7 776 166 2786 Виталий</p>
+    <div id="info" class="section">
+        <h1>Информация о турах</h1>
+        <h3>Мы предоставляем туры для различных направлений по Актау и окрестностям.</h3>
+        <div class="info-content">
+            <div class="info-item">
+                <img src="{% static 'tour/барханы.jpg' %}" alt="Tour 1">
+                <div class="info-text">
+                    <h2>Бески Туйсу (Барханы)</h2>
+                    <p>Погрузитесь в мир песчаных дюн, где ветер рисует узоры, а солнце создаёт волшебные световые
+                        игры.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/бозжыра.jpg' %}" alt="Tour 2">
+                <div class="info-text">
+                    <h2>Бозжыра</h2>
+                    <p>Насладитесь величественными видами каньонов и утёсов, восходящих к небесам в месте, где природа
+                        творит чудеса.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/айракты.jpg' %}" alt="Tour 3">
+                <div class="info-text">
+                    <h2>Долина замков Айракты</h2>
+                    <p>Путешествие в сказочную долину замков, где каждое возвышение напоминает о великом прошлом.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/торыш.jpg' %}" alt="Tour 4">
+                <div class="info-text">
+                    <h2>Долина камней (Торыш)</h2>
+                    <p>Исследуйте уникальный ландшафт, где гигантские каменные шары словно замерли во времени.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/ыбыктысай.jpg' %}" alt="Tour 5">
+                <div class="info-text">
+                    <h2>Каньон Ыбыктысай</h2>
+                    <p>Ощутите всю мощь природы в узких ущельях и глубоких каньонах, где каждая скала имеет свою
+                        историю.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/карын.jpg' %}" alt="Tour 6">
+                <div class="info-text">
+                    <h2>Карынжарык</h2>
+                    <p>Покорите суровые просторы Караинжарыка, где безмолвные пейзажи поражают своим великолепием.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/кызыл.jpg' %}" alt="Tour 7">
+                <div class="info-text">
+                    <h2>Кызылкуп</h2>
+                    <p>Погрузитесь в атмосферу загадочного Кызылкупа с его красными утёсами и таинственными тропами.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/каспий.jpg' %}" alt="Tour 8">
+                <div class="info-text">
+                    <h2>Побережье Каспийского моря</h2>
+                    <p>Отдохните на чистейших пляжах Каспия, наслаждаясь бескрайним морским горизонтом и кристально
+                        чистой водой.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="{% static 'tour/сор.jpg' %}" alt="Tour 9">
+                <div class="info-text">
+                    <h2>Сор Тузбаир</h2>
+                    <p>Прогулка по белоснежным солончакам Тузбаира оставит незабываемые впечатления от красоты этого
+                        уникального места.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="social-buttons">
-        <a href="https://t.me/+77761662786">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-        </a>
-        <a href="https://wa.me/77761662786">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        </a>
-        <a href="https://www.instagram.com/tour.aktau.kazakhstan/">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-        </a>
+    <div id="contact" class="section">
+        <h1>Контакты</h1>
+        <div class="contact-info">
+            <div class="contact-card">
+                <h2>Свяжитесь со мной</h2>
+                <div class="contact-item">
+                    <p>Телефон: +7 776 166 2786</p>
+                </div>
+                <div class="social-buttons">
+                    <a href="https://t.me/+77761662786">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+                    </a>
+                    <a href="https://wa.me/77761662786">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </a>
+                    <a href="https://www.instagram.com/tour.aktau.kazakhstan/">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                             alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <footer>
-    <p>&copy; 2024 Туризм в Актау. Все права защищены.</p>
+    <p>&copy; 2023 Туризм в Актау. Все права защищены.</p>
 </footer>
 </body>
 </html>
