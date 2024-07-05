@@ -25,8 +25,16 @@ SECRET_KEY = 'django-insecure-(@$agc!5i=lx8v6r=q^6!mzt%3b_qw+&9o3xs#m0bfw%3skk93
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['vitaliy.tour-aktau-kazakhstan.kz',
+                 'www.vitaliy.tour-aktau-kazakhstan.kz',
+                 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://vitaliy.tour-aktau-kazakhstan.kz',
+                        'https://www.vitaliy.tour-aktau-kazakhstan.kz',
+                        ]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 
