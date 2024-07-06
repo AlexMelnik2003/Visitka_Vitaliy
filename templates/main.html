@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{% static 'logo.png' %}">
+    <meta name="description" content="Сайт предлагает экскурсии по живописным и историческим местам Актау и его окрестностей. Профессиональный гид и фотограф Виталий организует многодневные туры, включая посещение каньонов, долин, гор и побережья Каспийского моря. На сайте можно ознакомиться с маршрутами, посмотреть фотографии и связаться для бронирования.">
+    <meta name="keywords" content="туризм в Актау, экскурсии по Казахстану, многодневные туры, природные достопримечательности, гид Виталий, фотограф в Актау, путешествия по Мангистау, Каспийское море, Долина камней, Бозжыра.">
     <title>Туризм в Актау</title>
     <style>
         body {
@@ -190,6 +192,7 @@
             document.getElementById(sectionId).classList.add('active');
         }
     </script>
+    <meta name="google-site-verification" content="7Iz7PpbzxBgK-Wy6JSF8iq9ADRMNBYeFtDn2E8F4ctE"/>
 </head>
 <body>
 <header>
@@ -491,29 +494,29 @@
     <p>&copy; 2023 Туризм в Актау. Все права защищены.</p>
 </footer>
 <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const buttons = document.querySelectorAll('.tour-btn');
-            const sections = document.querySelectorAll('.tour-info');
+    document.addEventListener("DOMContentLoaded", function() {
+        const buttons = document.querySelectorAll('.tour-btn');
+        const sections = document.querySelectorAll('.tour-info');
 
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetSection = button.getAttribute('data-tour');
-                    showSection(targetSection);
-                });
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetSection = button.getAttribute('data-tour');
+                showSection(targetSection);
             });
-
-            function showSection(targetSection) {
-                sections.forEach(section => {
-                    section.style.display = (section.id === targetSection) ? 'block' : 'none';
-                });
-            }
         });
 
-        var swiper = new Swiper('.swiper-container', {
-            pagination: {
-                el: '.swiper-pagination',
-            },
-        });
-    </script>
+        function showSection(targetSection) {
+            sections.forEach(section => {
+                section.style.display = (section.id === targetSection) ? 'block' : 'none';
+            });
+        }
+    });
+
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+</script>
 </body>
 </html>
